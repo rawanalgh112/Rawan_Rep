@@ -7,9 +7,11 @@ namespace Interns_Gate.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
+    // test github
     public HomeController(ILogger<HomeController> logger)
     {
+
+        int i = 0;
         _logger = logger;
     }
 
