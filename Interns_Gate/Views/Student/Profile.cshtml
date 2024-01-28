@@ -1,0 +1,206 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout_Stu.cshtml";
+}
+
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+
+<br />
+<br />
+<br />
+
+
+<main id="main">
+
+
+    <div class="container" id="Card_cont">
+        <div class="section-title">
+            <h2> Profile </h2>
+        </div>
+        <div class="row flex-lg-nowrap" data-aos="fade-up" data-aos-delay="200">
+
+
+            <div class="col">
+                <div class="row">
+                    <div class="col mb-3">
+                        <div class="card mc">
+                            <div class="card-body">
+
+
+
+                                <div class="card">
+                                    <div class="card-body">
+                                    <div class="row" style="padding: 20px 20px ;">
+
+                                        <div class="col" style="text-align: left !important">
+                                            <div class="">
+                                                <h6 >Name: <span id="name_txt">Rawan alghamdi</span></h6>
+                                                <h6 >Student ID: <span id="std_id">45445</span></h6>
+                                                <h6 >National ID: <span id="national_id">1085000000</span></h6>
+
+                                                <h6>Email: <span id="email_txt">rssalghamdi@gmail.com</span></h6>
+
+                                                <h6>Mobile: <span id="mobile_txt">05X XXX XXXX</span></h6>
+
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                </div>
+
+                                <ul class="nav nav-tabs" style="margin-top: 40px!important">
+                                        <li class="nav-item"><a href="" class="active nav-link">Records</a></li>
+                                    </ul>
+
+
+                                    <div class="tab-content pt-3">
+
+
+
+                                        <div class="tab-pane active">
+
+
+
+                                            <form class="form" novalidate="">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Transcript</label>
+                                                                    <input class="form-control" type="file" id="Transcript_file">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Passport</label>
+                                                                    <input class="form-control" type="file" id="Passport_file">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                </div>
+
+
+
+                                                <hr class="solid">
+
+
+
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>BlS</label>
+                                                                    <input class="form-control" type="file" id="BLS_file">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Expiration Date</label>
+
+                                                                    <input class="form-control" id="datepicker" width="276" onkeydown="return false" />
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                </div>
+
+
+
+                                                <hr class="solid">
+
+
+
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Medical Certificate</label>
+                                                                    <input class="form-control" type="file" id="MC_file">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Expiration Date</label>
+
+                                                                    <input id="datepicker2" width="276" onkeydown="return false" />
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row" style="margin-top: 40px; margin-bottom: 30px; ">
+                           
+                                       
+                                                    <div class="text-center"><button class="btn_y" type="submit">Save Changes</button></div>
+                                                
+                                                </div>
+                                            </form>
+
+
+                                            <script>
+                                                $('#datepicker').datepicker({
+                                                    uiLibrary: 'bootstrap5'
+                                                });
+
+                                                $('#datepicker2').datepicker({
+                                                    uiLibrary: 'bootstrap5'
+                                                });
+                                            </script>
+
+
+
+
+                                        </div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main><!-- End #main -->
+<!-- ======= Footer ======= -->
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

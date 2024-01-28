@@ -1,0 +1,15 @@
+﻿@{
+ 
+}
+
+
+@{
+    ViewData["UserType"] = "4";
+    if (ViewData["UserType"] != null)
+    {
+        if (ViewData["UserType"].ToString() == "4")
+            Layout = "_Layout_Stu";
+        else if (ViewData["UserType"].ToString() == "3") Layout = "~/Views/Shared/_Layout_Sup.cshtml";
+    }
+  
+}
