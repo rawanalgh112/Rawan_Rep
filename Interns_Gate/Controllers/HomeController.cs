@@ -22,6 +22,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        String g = "";
         return View();
     }
 
