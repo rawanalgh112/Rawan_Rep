@@ -11,12 +11,7 @@ public class HomeController : Controller
     public HomeController(ILogger<HomeController> logger)
     {
 
-        int i = 0;
-        int j = 1;
-
-        int j = 1;
-
-        int j = 1;
+   
         _logger = logger;
     }
 

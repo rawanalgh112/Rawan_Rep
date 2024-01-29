@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Interns_Gate.Migrations
 {
     /// <inheritdoc />
-    public partial class v1 : Migration
+    public partial class v11 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,10 +15,10 @@ namespace Interns_Gate.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -29,21 +29,21 @@ namespace Interns_Gate.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
-                    PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "TEXT", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,28 +54,28 @@ namespace Interns_Gate.Migrations
                 name: "Clinical_case",
                 columns: table => new
                 {
-                    stuCase_id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    stu_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    patientcode = table.Column<string>(type: "TEXT", nullable: false),
-                    sup_id = table.Column<string>(type: "TEXT", nullable: false),
-                    Gender = table.Column<string>(type: "TEXT", nullable: false),
-                    health_category = table.Column<string>(type: "TEXT", nullable: false),
-                    rot_id = table.Column<string>(type: "TEXT", nullable: false),
-                    tooth_num = table.Column<string>(type: "TEXT", nullable: false),
-                    citizenship = table.Column<string>(type: "TEXT", nullable: false),
-                    score = table.Column<int>(type: "INTEGER", nullable: false),
-                    birth_date = table.Column<string>(type: "TEXT", nullable: false),
-                    age_group = table.Column<string>(type: "TEXT", nullable: false),
-                    depratment_id = table.Column<string>(type: "TEXT", nullable: false),
-                    case_id = table.Column<string>(type: "TEXT", nullable: false),
-                    Tooth_no = table.Column<string>(type: "TEXT", nullable: false),
-                    create_date = table.Column<string>(type: "TEXT", nullable: false),
-                    accept_date = table.Column<string>(type: "TEXT", nullable: false),
-                    end_date = table.Column<string>(type: "TEXT", nullable: false),
-                    evlaution_date = table.Column<string>(type: "TEXT", nullable: false),
-                    status_id = table.Column<string>(type: "TEXT", nullable: false),
-                    measurement_type = table.Column<string>(type: "TEXT", nullable: false)
+                    stuCase_id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    stu_id = table.Column<int>(type: "int", nullable: false),
+                    patientcode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    sup_id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    health_category = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    rot_id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    tooth_num = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    citizenship = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    score = table.Column<int>(type: "int", nullable: false),
+                    birth_date = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    age_group = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    depratment_id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    case_id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tooth_no = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    create_date = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    accept_date = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    end_date = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    evlaution_date = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    status_id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    measurement_type = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,8 +86,8 @@ namespace Interns_Gate.Migrations
                 name: "clinical_status",
                 columns: table => new
                 {
-                    status_id = table.Column<string>(type: "TEXT", nullable: false),
-                    name = table.Column<string>(type: "TEXT", nullable: false)
+                    status_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -98,12 +98,12 @@ namespace Interns_Gate.Migrations
                 name: "Intern_cases",
                 columns: table => new
                 {
-                    Case_id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Case_name = table.Column<string>(type: "TEXT", nullable: false),
-                    Category = table.Column<string>(type: "TEXT", nullable: false),
-                    AgeGroup = table.Column<string>(type: "TEXT", nullable: false),
-                    Active = table.Column<string>(type: "TEXT", nullable: false)
+                    Case_id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Case_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AgeGroup = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Active = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,9 +114,9 @@ namespace Interns_Gate.Migrations
                 name: "quality",
                 columns: table => new
                 {
-                    Case_id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    M_ID = table.Column<string>(type: "TEXT", nullable: false)
+                    Case_id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    M_ID = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -127,9 +127,9 @@ namespace Interns_Gate.Migrations
                 name: "quality_detials",
                 columns: table => new
                 {
-                    m_type = table.Column<int>(type: "INTEGER", nullable: false),
-                    M_ID = table.Column<string>(type: "TEXT", nullable: false),
-                    score = table.Column<string>(type: "TEXT", nullable: false)
+                    m_type = table.Column<int>(type: "int", nullable: false),
+                    M_ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    score = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -140,8 +140,8 @@ namespace Interns_Gate.Migrations
                 name: "quantity",
                 columns: table => new
                 {
-                    Case_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    score = table.Column<string>(type: "TEXT", nullable: false)
+                    Case_id = table.Column<int>(type: "int", nullable: false),
+                    score = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -152,8 +152,8 @@ namespace Interns_Gate.Migrations
                 name: "Rotation",
                 columns: table => new
                 {
-                    rot_id = table.Column<string>(type: "TEXT", nullable: false),
-                    rot_name = table.Column<string>(type: "TEXT", nullable: false)
+                    rot_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    rot_name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -164,8 +164,8 @@ namespace Interns_Gate.Migrations
                 name: "supervisor_intern",
                 columns: table => new
                 {
-                    sup_id = table.Column<string>(type: "TEXT", nullable: false),
-                    sup_fullname = table.Column<string>(type: "TEXT", nullable: false)
+                    sup_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    sup_fullname = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -176,11 +176,11 @@ namespace Interns_Gate.Migrations
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    RoleId = table.Column<string>(type: "TEXT", nullable: false),
-                    ClaimType = table.Column<string>(type: "TEXT", nullable: true),
-                    ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -197,11 +197,11 @@ namespace Interns_Gate.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    ClaimType = table.Column<string>(type: "TEXT", nullable: true),
-                    ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -218,10 +218,10 @@ namespace Interns_Gate.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "TEXT", nullable: true),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false)
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -238,8 +238,8 @@ namespace Interns_Gate.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    RoleId = table.Column<string>(type: "TEXT", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -262,10 +262,10 @@ namespace Interns_Gate.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    LoginProvider = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
-                    Value = table.Column<string>(type: "TEXT", nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -287,7 +287,8 @@ namespace Interns_Gate.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -313,7 +314,8 @@ namespace Interns_Gate.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
         }
 
         /// <inheritdoc />
