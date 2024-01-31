@@ -10,6 +10,6 @@ namespace Interns_Gate.Models
         
         public int Case_id { get; set; }
     
-        public string M_ID { get; set;}
+        public required string M_ID { get; set;}
     }
 }

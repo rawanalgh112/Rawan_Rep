@@ -1,10 +1,12 @@
-﻿@*
+﻿@using Complains_project.Models;
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
     Layout = "~/Views/Shared/_Layout_Stu.cshtml";
 }
 
+@model DDLViewModel
 
 
 <meta charset="utf-8">
@@ -20,7 +22,9 @@
 <br />
 
 
+
 <main id="main">
+
 
 
     <section id="contact" class="contact section-bg">
@@ -38,11 +42,11 @@
 
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a href="" class="active nav-link">
+                                <div  class="active nav-link">
                                     <div class="subTitle">
                                         <h5> Patient Information</h5>
                                     </div>
-                                </a>
+                                </div>
                             </li>
                         </ul>
 
@@ -102,19 +106,24 @@
 
                         <div class="form-group">
                             <label for="name"> Rotation</label>
-                            <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
+                  
 
-                            <select class="form-control" id="rota" name="Rotation" required>
+                        <select class="form-control" id="rota" name="Rotation" required>
                                 <option>Select</option>
-                                <option>O.S</option>
-                                <option>ER</option>
-                                <option>CCC</option>
-                                <option>Hospital</option>
-                                <option>Secondary hospital</option>
-                                <option>Public health </option>
-                            </select>
-                        </div>
+                                @foreach (var item in Model.RotationList)
+                                {
 
+                                    <option value="@item.Value">
+                                        @item.Text
+                                    </option>
+                                }
+                            </select>
+
+
+                      
+                       @*     @Html.DropDownListFor(m => m.SelectedCaseRotation, Model.RotationList)*@
+                        </div>
+                        
 
 
 
@@ -122,18 +131,17 @@
 
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a href="" class="active nav-link">
+                                <div class="active nav-link">
                                     <div class="subTitle">
                                         <h5>Case Information</h5>
                                     </div>
 
-                                </a>
+                                </div>
                             </li>
                         </ul>
 
 
                         <div class="row">
-
 
                             <div class="form-group col-md-6">
                                 <label for="name"> Age group </label>
@@ -184,10 +192,13 @@
                                     <label for="name"> Tooth No</label>
                                     <select class="form-control" id="tooth" name="Tooth" required>
                                         <option>Select</option>
-                                        <option>Tooth 1</option>
-                                        <option>Tooth 2</option>
-                                        <option>Tooth 3</option>
+                                        @foreach (var item in Model.TeethList)
+                                        {
 
+                                            <option value="@item.Value">
+                                                @item.Text
+                                            </option>
+                                        }
 
                                     </select>
 
@@ -202,12 +213,12 @@
 
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a href="" class="active nav-link">
+                                <div class="active nav-link">
                                     <div class="subTitle">
                                         <h5>Assigned to</h5>
                                     </div>
 
-                                </a>
+                                </div>
                             </li>
                         </ul>
 
@@ -229,12 +240,12 @@
                         <div id="Hidden_resubmition_case">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a href="" class="active nav-link">
+                                    <div class="active nav-link">
                                         <div class="subTitle">
                                             <h5 style="color:hotpink !important">Duplicate Case !</h5>
                                         </div>
 
-                                    </a>
+                                    </div>
                                 </li>
                             </ul>
                             <div class="form-group">

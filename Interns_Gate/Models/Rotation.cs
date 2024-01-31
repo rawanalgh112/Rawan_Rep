@@ -5,7 +5,7 @@ namespace Interns_Gate.Models
     {
          
          [Key]
-        public string rot_id { get; set; }
-        public string rot_name { get; set; }
+        public required string Rot_id { get; set; }
+        public required string Rot_name { get; set; }
     }
 }

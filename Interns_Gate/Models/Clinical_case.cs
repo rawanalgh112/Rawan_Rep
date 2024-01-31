@@ -10,33 +10,33 @@ namespace Interns_Gate.Models
     {
         [Key]
 
-        public int stuCase_id { get; set; }       
-        public int stu_id { get; set; }
-        public string patientcode { get; set; }
+        public int StuCase_id { get; set; }       
+        public int Stu_id { get; set; }
+        public required string Patientcode { get; set; }
   
-        public string sup_id { get; set; }
+        public string Sup_Id { get; set; }
         public string Gender { get; set; }
 
-        public string health_category { get; set; }
+        public string Health_category { get; set; }
 
-        public string rot_id { get; set; }
-        public string tooth_num { get; set; }
+        public string Rot_id { get; set; }
+        public string Tooth_num { get; set; }
 
-        public string citizenship { get; set; }
+        public string Citizenship { get; set; }
 
-        public int score { get; set; }
-        public string birth_date { get; set; }
-        public string age_group{ get; set; }
-        public string depratment_id { get; set; }
-        public string case_id { get; set; }
+        public int Score { get; set; }
+        public string Birth_date { get; set; }
+        public string Age_group{ get; set; }
+        public string Depratment_id { get; set; }
+        public string Case_id { get; set; }
 
         public string Tooth_no { get; set; }
-        public string create_date { get; set; }
-        public string accept_date { get; set; }
-        public string end_date { get; set; }
-        public string evlaution_date { get; set; }
-        public string status_id { get; set; }
-        public string measurement_type { get; set; }
+        public string Create_date { get; set; }
+        public string Accept_date { get; set; }
+        public string End_date { get; set; }
+        public string Evlaution_date { get; set; }
+        public string Status_id { get; set; }
+        public string Measurement_type { get; set; }
 
 
 

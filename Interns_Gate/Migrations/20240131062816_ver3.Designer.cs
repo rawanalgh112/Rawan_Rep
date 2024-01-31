@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Interns_Gate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240129094923_v11")]
-    partial class v11
+    [Migration("20240131062816_ver3")]
+    partial class ver3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -232,6 +232,20 @@ namespace Interns_Gate.Migrations
                     b.HasKey("sup_id");
 
                     b.ToTable("supervisor_intern");
+                });
+
+            modelBuilder.Entity("Interns_Gate.Models.Teeth", b =>
+                {
+                    b.Property<string>("Tooth_no")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Tooth_no");
+
+                    b.ToTable("Teeth");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
