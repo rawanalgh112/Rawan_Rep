@@ -82,6 +82,10 @@ namespace Interns_Gate.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Resubmission_reason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Rot_id")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -101,10 +105,6 @@ namespace Interns_Gate.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Tooth_no")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tooth_num")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

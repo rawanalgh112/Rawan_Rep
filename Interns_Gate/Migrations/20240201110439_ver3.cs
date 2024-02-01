@@ -5,7 +5,7 @@
 namespace Interns_Gate.Migrations
 {
     /// <inheritdoc />
-    public partial class ver2 : Migration
+    public partial class ver3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

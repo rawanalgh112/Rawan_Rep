@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
+using Interns_Gate.Data;
 
-
-namespace Complains_project.Models
+namespace Interns_Gate.Models
 {
     public class DDLViewModel
     {
@@ -13,5 +13,8 @@ namespace Complains_project.Models
 
         public int SelectedTooth { get; set; }
         public required IEnumerable<SelectListItem> TeethList { get; set; }
+
+
+        public Clinical_case ClinicalCase_V_Model { get; set; }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Interns_Gate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240131060854_ver1")]
-    partial class ver1
+    [Migration("20240201103354_ver2")]
+    partial class ver2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,13 +27,83 @@ namespace Interns_Gate.Migrations
 
             modelBuilder.Entity("Interns_Gate.Models.Clinical_case", b =>
                 {
-                    b.Property<int>("stuCase_id")
+                    b.Property<int>("StuCase_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("stuCase_id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StuCase_id"));
+
+                    b.Property<string>("Accept_date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Age_group")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Birth_date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Case_id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Citizenship")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Create_date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Depratment_id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("End_date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Evlaution_date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Health_category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Measurement_type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Patientcode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Resubmission_reason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rot_id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status_id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Stu_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Sup_Id")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -41,91 +111,21 @@ namespace Interns_Gate.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("accept_date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("age_group")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("birth_date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("case_id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("citizenship")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("create_date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("depratment_id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("end_date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("evlaution_date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("health_category")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("measurement_type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("patientcode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("rot_id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("score")
-                        .HasColumnType("int");
-
-                    b.Property<string>("status_id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("stu_id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("sup_id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("tooth_num")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("stuCase_id");
+                    b.HasKey("StuCase_id");
 
                     b.ToTable("Clinical_case");
                 });
 
             modelBuilder.Entity("Interns_Gate.Models.Clinical_status", b =>
                 {
-                    b.Property<string>("status_id")
+                    b.Property<string>("Status_id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("status_id");
+                    b.HasKey("Status_id");
 
                     b.ToTable("clinical_status");
                 });
@@ -178,17 +178,17 @@ namespace Interns_Gate.Migrations
 
             modelBuilder.Entity("Interns_Gate.Models.Quality_detials", b =>
                 {
-                    b.Property<int>("m_type")
+                    b.Property<int>("M_type")
                         .HasColumnType("int");
 
                     b.Property<string>("M_ID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("score")
+                    b.Property<string>("Score")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("m_type", "M_ID");
+                    b.HasKey("M_type", "M_ID");
 
                     b.ToTable("quality_detials");
                 });
@@ -198,40 +198,54 @@ namespace Interns_Gate.Migrations
                     b.Property<int>("Case_id")
                         .HasColumnType("int");
 
-                    b.Property<string>("score")
+                    b.Property<string>("Score")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Case_id", "score");
+                    b.HasKey("Case_id", "Score");
 
                     b.ToTable("quantity");
                 });
 
             modelBuilder.Entity("Interns_Gate.Models.Rotation", b =>
                 {
-                    b.Property<string>("rot_id")
+                    b.Property<string>("Rot_id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("rot_name")
+                    b.Property<string>("Rot_name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("rot_id");
+                    b.HasKey("Rot_id");
 
                     b.ToTable("Rotation");
                 });
 
             modelBuilder.Entity("Interns_Gate.Models.Supervisor_intern", b =>
                 {
-                    b.Property<string>("sup_id")
+                    b.Property<string>("Sup_id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("sup_fullname")
+                    b.Property<string>("Sup_fullname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("sup_id");
+                    b.HasKey("Sup_id");
 
                     b.ToTable("supervisor_intern");
+                });
+
+            modelBuilder.Entity("Interns_Gate.Models.Teeth", b =>
+                {
+                    b.Property<string>("Tooth_no")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Tooth_no");
+
+                    b.ToTable("Teeth");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

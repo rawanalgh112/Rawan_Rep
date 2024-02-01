@@ -20,7 +20,7 @@ namespace Interns_Gate.Models
         public string Health_category { get; set; }
 
         public string Rot_id { get; set; }
-        public string Tooth_num { get; set; }
+
 
         public string Citizenship { get; set; }
 
@@ -39,6 +39,7 @@ namespace Interns_Gate.Models
         public string Measurement_type { get; set; }
 
 
+        public string Resubmission_reason { get; set; }
 
 
 
