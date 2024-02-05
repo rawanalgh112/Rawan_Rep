@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using System.Xml.Linq;
 
 namespace Interns_Gate.Controllers
 {
@@ -88,8 +89,8 @@ namespace Interns_Gate.Controllers
 
         public IActionResult NewCase(Clinical_case clinicalCaseModel)
         {
-        
 
+         
 
             var model = new DDLViewModel
             {
@@ -100,14 +101,17 @@ namespace Interns_Gate.Controllers
 
             return View(model);
 
-        }
+        } 
 
- [HttpPost]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult NewCase(
-       string Patient_file, string gender, string Citizenship, string Health_Category,
+        string Patient_file, string gender, string Citizenship, string Health_Category,
         string Rotation, string Age_group, string Department, string Case, string Tooth, string Supervisor, string DuplicateCase)
         {
 
+           
+    
 
             Clinical_case NewCaseRecord = new Clinical_case();
 
@@ -134,22 +138,44 @@ namespace Interns_Gate.Controllers
             NewCaseRecord.Resubmission_reason = DuplicateCase;
 
 
-             var isPatientCodeDuplicate = _context.Clinical_case.Where(x => x.Patientcode == Patient_file && x.Tooth_no == Tooth && x.Stu_id == 00042235).ToList();
-
-            if(ModelState.IsValid)
+            var isPatientCodeDuplicate = _context.Clinical_case.Where(x => x.Patientcode == Patient_file && x.Tooth_no == Tooth && x.Stu_id == 00042235).ToList();
+            if (isPatientCodeDuplicate.Count == 0)
             {
+        
+              
+              ModelState.AddModelError(string.Empty, "This Case is duplicate, you have the same patient and tooth in your records. To proceed please enter the duplication reason.");
+                    _context.Clinical_case.Add(NewCaseRecord);
+                    _context.SaveChanges();
 
-                _context.Clinical_case.Add(NewCaseRecord);
-                _context.SaveChanges();
 
-
-                return RedirectToAction("MyCases", "Student");
-
+                    return RedirectToAction("MyCases", "Student");
+                
 
             }
+            else // Duplicate case.
+            {
+                if(DuplicateCase == null)
+                {
 
+                    ModelState.AddModelError(string.Empty, "This Case is duplicate, you have the same patient and tooth in your records. To proceed please enter the duplication reason.");
+                    return RedirectToAction("NewCase", "Student");
 
-            return RedirectToAction( "HomePage_Stu" , "Student");
+                }
+                else
+                {
+
+                    // reason was entered for the duplicate case.
+               
+                        _context.Clinical_case.Add(NewCaseRecord);
+                        _context.SaveChanges();
+                        return RedirectToAction("MyCases", "Student");
+                    
+
+                }
+
+           
+            }
+
 
     
 

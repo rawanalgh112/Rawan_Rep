@@ -7,17 +7,20 @@ namespace Interns_Gate.Models
     public class DDLViewModel
     {
 
-        [Display(Name = "Rotation")]
+    
         public int SelectedCaseRotation { get; set; }
-        public required IEnumerable<SelectListItem> RotationList { get; set; }
+
+        public IEnumerable<SelectListItem> RotationList { get; set; }
 
         public int SelectedTooth { get; set; }
-        public required IEnumerable<SelectListItem> TeethList { get; set; }
 
+        public IEnumerable<SelectListItem> TeethList { get; set; }
 
         public int SelectedSupervisor { get; set; }
-        public required IEnumerable<SelectListItem> Supervisor_internList { get; set; }
+
+        public IEnumerable<SelectListItem> Supervisor_internList { get; set; }
 
         public Clinical_case ClinicalCase_V_Model { get; set; }
+
     }
 }

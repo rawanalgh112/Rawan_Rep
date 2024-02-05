@@ -16,6 +16,7 @@
 <meta content="" name="keywords">
 
 
+
 <br />
 <br />
 <br />
@@ -53,7 +54,8 @@
 
                             <div class="form-group col-md-6">
                                 <label>Patient file</label>
-                                <input type="number" min="1" name="Patient_file" class="form-control" required>
+                                <input asp-for="ClinicalCase_V_Model.Patientcode" type="number" min="1" name="Patient_file" class="form-control" required>
+                                <span asp-validation-for="ClinicalCase_V_Model.Patientcode" class="text-danger"> </span>
                             </div>
 
                             <div class="form-group col-md-6">
@@ -61,7 +63,7 @@
                                 <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
 
                                 <select class="form-control" name="gender" required>
-                                    <option >Select</option>
+                                    <option>Select</option>
                                     <option>Male</option>
                                     <option>Female</option>
                                 </select>
@@ -78,7 +80,7 @@
                             <div class="form-group col-md-6">
                                 <label> Citizenship </label>
                                 <select class="form-control" name="Citizenship" required>
-                                    <option >Select</option>
+                                    <option>Select</option>
                                     <option>Saudi</option>
                                     <option>Non Saudi</option>
                                 </select>
@@ -90,7 +92,7 @@
                                 <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
 
                                 <select class="form-control" name="Health_Category" required>
-                                    <option >Select</option>
+                                    <option>Select</option>
                                     <option>Healthy</option>
                                     <option>Compromised</option>
                                     <option>Special care</option>
@@ -107,7 +109,7 @@
                             <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
 
                             <select class="form-control" name="Rotation" required>
-                                <option >Select</option>
+                                <option>Select</option>
                                 @foreach (var item in Model.RotationList)
                                 {
 
@@ -141,7 +143,7 @@
                             <div class="form-group col-md-6">
                                 <label> Age group </label>
                                 <select class="form-control" name="Age_group" required>
-                                    <option >Select</option>
+                                    <option>Select</option>
                                     <option>Pediatric</option>
                                     <option>Adult</option>
                                     <option>Geriatric</option>
@@ -153,7 +155,7 @@
                                 <label> Department </label>
 
                                 <select class="form-control" name="Department" required>
-                                    <option >Select</option>
+                                    <option>Select</option>
                                     <option>dep 2</option>
                                     <option>dep 2</option>
                                     <option>dep 3</option>
@@ -172,7 +174,7 @@
                                 <label> Case</label>
 
                                 <select class="form-control" name="Case" required>
-                                    <option  >Select</option>
+                                    <option>Select</option>
                                     <option>case1</option>
                                     <option>case2</option>
                                     <option>case3</option>
@@ -186,8 +188,8 @@
                                 <div class="form-group">
                                     <label> Tooth No</label>
                                     <select class="form-control" name="Tooth" required>
-                                        <option >Select</option>
-                                        
+                                        <option>Select</option>
+
                                         @foreach (var item in Model.TeethList)
                                         {
 
@@ -227,7 +229,7 @@
                             *@
 
                             <select class="form-control" name="Supervisor" required>
-                                <option  >Select</option>
+                                <option>Select</option>
                                 @foreach (var item in Model.Supervisor_internList)
                                 {
 
@@ -253,12 +255,19 @@
                                     </div>
                                 </li>
                             </ul>
+
+
+
                             <div class="form-group">
                                 <label> You have submitted this case before, please write the reason of the re-submition</label>
                                 <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
-
-                                <textarea type="text" min="1" name="DuplicateCase" class="form-control" required>
+                            
+                                <textarea type="text" min="1" name="DuplicateCase" id="dc" class="form-control">
 </textarea>
+
+
+
+
                             </div>
                         </div>
 
@@ -282,13 +291,20 @@
 
 
 
+
+
                     </form>
+
+   
+
                 </div>
 
             </div>
 
         </div>
     </section><!-- End Contact Section -->
+
+
 
 
 </main><!-- End #main -->

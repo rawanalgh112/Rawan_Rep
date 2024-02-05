@@ -12,7 +12,9 @@ namespace Interns_Gate.Models
 
         public int StuCase_id { get; set; }       
         public int Stu_id { get; set; }
-        public string? Patientcode { get; set; }
+
+        [Required(ErrorMessage ="Patient code is required")]
+        public string Patientcode { get; set; }
   
         public string Sup_Id { get; set; }
         public string Gender { get; set; }
@@ -37,6 +39,7 @@ namespace Interns_Gate.Models
         public string Evlaution_date { get; set; }
         public string Status_id { get; set; }
         public string Measurement_type { get; set; }
+
 
 
         public string Resubmission_reason { get; set; }

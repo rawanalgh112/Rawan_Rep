@@ -152,6 +152,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
