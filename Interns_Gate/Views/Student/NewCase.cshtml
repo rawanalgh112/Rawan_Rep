@@ -61,7 +61,7 @@
                                 <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
 
                                 <select class="form-control" name="gender" required>
-                                    <option disabled>Select</option>
+                                    <option >Select</option>
                                     <option>Male</option>
                                     <option>Female</option>
                                 </select>
@@ -78,7 +78,7 @@
                             <div class="form-group col-md-6">
                                 <label> Citizenship </label>
                                 <select class="form-control" name="Citizenship" required>
-                                    <option disabled>Select</option>
+                                    <option >Select</option>
                                     <option>Saudi</option>
                                     <option>Non Saudi</option>
                                 </select>
@@ -90,7 +90,7 @@
                                 <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
 
                                 <select class="form-control" name="Health_Category" required>
-                                    <option disabled>Select</option>
+                                    <option >Select</option>
                                     <option>Healthy</option>
                                     <option>Compromised</option>
                                     <option>Special care</option>
@@ -107,7 +107,7 @@
                             <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
 
                             <select class="form-control" name="Rotation" required>
-                                <option disabled>Select</option>
+                                <option >Select</option>
                                 @foreach (var item in Model.RotationList)
                                 {
 
@@ -141,7 +141,7 @@
                             <div class="form-group col-md-6">
                                 <label> Age group </label>
                                 <select class="form-control" name="Age_group" required>
-                                    <option disabled>Select</option>
+                                    <option >Select</option>
                                     <option>Pediatric</option>
                                     <option>Adult</option>
                                     <option>Geriatric</option>
@@ -153,7 +153,7 @@
                                 <label> Department </label>
 
                                 <select class="form-control" name="Department" required>
-                                    <option disabled>Select</option>
+                                    <option >Select</option>
                                     <option>dep 2</option>
                                     <option>dep 2</option>
                                     <option>dep 3</option>
@@ -172,7 +172,7 @@
                                 <label> Case</label>
 
                                 <select class="form-control" name="Case" required>
-                                    <option disabled >Select</option>
+                                    <option  >Select</option>
                                     <option>case1</option>
                                     <option>case2</option>
                                     <option>case3</option>
@@ -186,7 +186,7 @@
                                 <div class="form-group">
                                     <label> Tooth No</label>
                                     <select class="form-control" name="Tooth" required>
-                                        <option disabled>Select</option>
+                                        <option >Select</option>
                                         
                                         @foreach (var item in Model.TeethList)
                                         {
@@ -227,7 +227,7 @@
                             *@
 
                             <select class="form-control" name="Supervisor" required>
-                                <option disabled >Select</option>
+                                <option  >Select</option>
                                 @foreach (var item in Model.Supervisor_internList)
                                 {
 
