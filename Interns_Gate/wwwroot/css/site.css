@@ -263,14 +263,117 @@ navbar .getstarted,
     .btn_y:hover {
         background-color: #e6b24f !important;
     }
-.contact .php-email-form button[type=submit] {
-    background: #FFCF75 !important;
- 
+
+
+/************************** form ************************* */
+.FormStyle {
+    width: 100%;
+    border-top: 3px solid #47b2e4;
+    border-bottom: 3px solid #47b2e4;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
 }
 
-    .contact .php-email-form button[type=submit]:hover {
-        background: #f2ba52 !important;
+    .FormStyle .form-group {
+        padding-bottom: 8px;
     }
+.contact .FormStyle .validate {
+    display: none;
+    color: red;
+    margin: 0 0 15px 0;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.contact .FormStyle .error-message {
+    display: none;
+    color: #fff;
+    background: #ed3c0d;
+    text-align: left;
+    padding: 15px;
+    font-weight: 600;
+}
+
+    .contact .FormStyle .error-message br + br {
+        margin-top: 25px;
+    }
+
+.contact .FormStyle .sent-message {
+    display: none;
+    color: #fff;
+    background: #18d26e;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.contact .FormStyle .loading {
+    display: none;
+    background: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+
+.btnMain:hover, .contact .FormStyle button[type=submit]:hover {
+    background: #f2ba52 !important;
+}
+.contact .FormStyle .loading:before {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 0 10px -6px 0;
+    border: 3px solid #18d26e;
+    border-top-color: #eee;
+    animation: animate-loading 1s linear infinite;
+}
+
+.contact .FormStyle label {
+    padding-bottom: 8px;
+}
+
+.contact .FormStyle input,
+.contact .FormStyle textarea {
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+    .contact .FormStyle input:focus,
+    .contact .FormStyle textarea:focus {
+        border-color: #47b2e4;
+    }
+
+.contact .FormStyle input {
+    height: 44px;
+}
+
+.contact .FormStyle textarea {
+    padding: 10px 12px;
+}
+
+.contact .FormStyle .form-group {
+    margin-bottom: 20px;
+}
+
+.btnMain, .contact .FormStyle button[type=submit] {
+  
+    border: 0 !important;
+    padding: 12px 34px !important;
+    color: #fff !important;
+    transition: 0.4s !important;
+    border-radius: 50px !important;
+
+    background: #FFCF75 !important;
+}
+
+
+
+
 
 .btn_g {
     background: #71d382 !important;
@@ -562,13 +665,13 @@ navbar .getstarted,
 }
 
 
-.contact .php-email-form input:focus,
-.contact .php-email-form textarea:focus {
+.contact .FormStyle input:focus,
+.contact .FormStyle textarea:focus {
     border-color: #FFCF75 !important;
 }
 
 
-.contact .php-email-form {
+.contact .FormStyle {
 
     border-top: 3px solid #FFCF75 !important;
     border-bottom: 3px solid #FFCF75 !important;

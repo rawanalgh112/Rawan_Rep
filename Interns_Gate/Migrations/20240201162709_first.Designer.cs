@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Interns_Gate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240201110439_ver3")]
-    partial class ver3
+    [Migration("20240201162709_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

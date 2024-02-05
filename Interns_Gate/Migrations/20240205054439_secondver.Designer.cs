@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Interns_Gate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240201073413_ver0")]
-    partial class ver0
+    [Migration("20240205054439_secondver")]
+    partial class secondver
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,6 +82,9 @@ namespace Interns_Gate.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Patientcode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Resubmission_reason")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

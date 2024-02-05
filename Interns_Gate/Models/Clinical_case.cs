@@ -12,7 +12,7 @@ namespace Interns_Gate.Models
 
         public int StuCase_id { get; set; }       
         public int Stu_id { get; set; }
-        public required string Patientcode { get; set; }
+        public string? Patientcode { get; set; }
   
         public string Sup_Id { get; set; }
         public string Gender { get; set; }

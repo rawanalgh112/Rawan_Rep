@@ -72,44 +72,86 @@ namespace Interns_Gate.Controllers
             return new SelectList(TeethList, "Value", "Text");
 
         }
+        private IEnumerable<SelectListItem> GetSupervisor()
+        {
 
-       
+            List<SelectListItem> SupList = _context.supervisor_intern.Select(i =>
+                       new SelectListItem
+                       {
+                           Text = i.Sup_fullname,
+                           Value = i.Sup_id
+                       }).ToList();
+
+            return new SelectList(SupList, "Value", "Text");
+
+        }
+
         public IActionResult NewCase(Clinical_case clinicalCaseModel)
         {
-            int stuCase_idVar = clinicalCaseModel.StuCase_id;
-            int Stu_idVar = clinicalCaseModel.Stu_id;
-            string PatientcodeVar = clinicalCaseModel.Patientcode;
-            string Sup_IdVar = clinicalCaseModel.Sup_Id;
-            string GenderVar = clinicalCaseModel.Gender;
-            string Health_categoryVar = clinicalCaseModel.Health_category;
-            string Rot_idVar = clinicalCaseModel.Rot_id;
-            string CitizenshipVar = clinicalCaseModel.Citizenship;
-            int ScoreVar = clinicalCaseModel.Score;
-            string BirthdateVar = clinicalCaseModel.Birth_date;
-            string AgegroupVar = clinicalCaseModel.Age_group;
-            string DepratmentidVar = clinicalCaseModel.Depratment_id;
-            string Case_idVar = clinicalCaseModel.Case_id;
-            string Tooth_noVar = clinicalCaseModel.Tooth_no;
-            string Create_dateVar = clinicalCaseModel.Create_date;
-            string Accept_dateVar = clinicalCaseModel.Accept_date;
-            string End_dateVar = clinicalCaseModel.End_date;
-            string Evlaution_dateVar = clinicalCaseModel.Evlaution_date;
-            string Status_idVar = clinicalCaseModel.Status_id;
-            string Measurement_typeVar = clinicalCaseModel.Measurement_type;
-
-
-
-
-
+        
 
 
             var model = new DDLViewModel
             {
+                Supervisor_internList = GetSupervisor(),
                 RotationList = GetRotation(),
                 TeethList = GetTeeth()
             };
 
             return View(model);
+
+        }
+
+ [HttpPost]
+        public IActionResult NewCase(
+       string Patient_file, string gender, string Citizenship, string Health_Category,
+        string Rotation, string Age_group, string Department, string Case, string Tooth, string Supervisor, string DuplicateCase)
+        {
+
+
+            Clinical_case NewCaseRecord = new Clinical_case();
+
+
+            NewCaseRecord.Stu_id = 00042235;
+            NewCaseRecord.Patientcode = Patient_file;
+            NewCaseRecord.Sup_Id = Supervisor;
+            NewCaseRecord.Gender = gender;
+            NewCaseRecord.Health_category = Health_Category;
+            NewCaseRecord.Rot_id = Rotation;
+            NewCaseRecord.Citizenship = Citizenship;
+            NewCaseRecord.Score = 0;
+            NewCaseRecord.Birth_date = DateTime.Now.ToString();
+            NewCaseRecord.Age_group = Age_group;
+            NewCaseRecord.Depratment_id = Department;
+            NewCaseRecord.Case_id = Case;
+            NewCaseRecord.Tooth_no = Tooth;
+            NewCaseRecord.Create_date = DateTime.Now.ToString();
+            NewCaseRecord.Accept_date = DateTime.Now.ToString();
+            NewCaseRecord.End_date = DateTime.Now.ToString();
+            NewCaseRecord.Evlaution_date = DateTime.Now.ToString();
+            NewCaseRecord.Status_id = "1";
+            NewCaseRecord.Measurement_type = "2";
+            NewCaseRecord.Resubmission_reason = DuplicateCase;
+
+
+             var isPatientCodeDuplicate = _context.Clinical_case.Where(x => x.Patientcode == Patient_file && x.Tooth_no == Tooth && x.Stu_id == 00042235).ToList();
+
+            if(ModelState.IsValid)
+            {
+
+                _context.Clinical_case.Add(NewCaseRecord);
+                _context.SaveChanges();
+
+
+                return RedirectToAction("MyCases", "Student");
+
+
+            }
+
+
+            return RedirectToAction( "HomePage_Stu" , "Student");
+
+    
 
         }
 
@@ -122,46 +164,11 @@ namespace Interns_Gate.Controllers
         {
             return View();
         }
-   
+
         public IActionResult Clinical_Evaluation()
         {
             return View();
         }
-
-
-        public ActionResult SubmitCaseButton(Clinical_case clinicalCaseModel)
-        {
-
-            int stuCase_idVar = clinicalCaseModel.StuCase_id;
-            int Stu_idVar = clinicalCaseModel.Stu_id;
-            string PatientcodeVar = clinicalCaseModel.Patientcode;
-            string Sup_IdVar = clinicalCaseModel.Sup_Id;
-            string GenderVar = clinicalCaseModel.Gender;
-            string Health_categoryVar = clinicalCaseModel.Health_category;
-            string Rot_idVar = clinicalCaseModel.Rot_id;
-
-            string CitizenshipVar = clinicalCaseModel.Citizenship;
-            int ScoreVar = clinicalCaseModel.Score;
-            string BirthdateVar = clinicalCaseModel.Birth_date;
-            string AgegroupVar = clinicalCaseModel.Age_group;
-            string DepratmentidVar = clinicalCaseModel.Depratment_id;
-            string Case_idVar = clinicalCaseModel.Case_id;
-            string Tooth_noVar = clinicalCaseModel.Tooth_no;
-            string Create_dateVar = clinicalCaseModel.Create_date;
-            string Accept_dateVar = clinicalCaseModel.Accept_date;
-            string End_dateVar = clinicalCaseModel.End_date;
-            string Evlaution_dateVar = clinicalCaseModel.Evlaution_date;
-            string Status_idVar = clinicalCaseModel.Status_id;
-            string Measurement_typeVar = clinicalCaseModel.Measurement_type;
-
-
-
-
-
-            return LocalRedirect("~/Student/NewCase");
-
-        }
-
 
     }
 }

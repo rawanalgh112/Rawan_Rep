@@ -79,7 +79,6 @@ namespace Interns_Gate.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Patientcode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Resubmission_reason")

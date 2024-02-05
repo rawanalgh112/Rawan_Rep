@@ -8,11 +8,10 @@
 
 @model DDLViewModel
 
-
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title> طلب جديد</title>
+<title> New Case</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -22,265 +21,273 @@
 <br />
 
 
-
 <main id="main">
 
 
-
     <section id="contact" class="contact section-bg">
-     
-     @*   @using (Html.BeginForm("NewCase", "Student", FormMethod.Post, new { @class = "contact section-bg" }))
-        {*@
+        <div class="container">
 
-            <div class="container">
+            <div class="section-title">
+                <h2> New Case </h2>
+            </div>
 
-                <div class="section-title">
-                    <h2> New Case </h2>
-                </div>
-
-                <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
 
 
-                    <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+                <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+                    <form asp-action="NewCase" asp-controller="Student" method="post" class="FormStyle">
 
-
-                    @using (Html.BeginForm("NewCase", "Student", FormMethod.Post, new { @class = "php-email-form" }))
-{
                         <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <div class="active nav-link">
-                                        <div class="subTitle">
-                                            <h5> Patient Information</h5>
-                                        </div>
+                            <li class="nav-item">
+                                <div href="" class="active nav-link">
+                                    <div class="subTitle">
+                                        <h5> Patient Information</h5>
                                     </div>
-                                </li>
-                            </ul>
-
-
-                            <div class="row">
-
-                                <div class="form-group col-md-6">
-                                    <label for="name">Patient file</label>
-                               @Html.TextBoxFor(m=> m.ClinicalCase_V_Model.Patientcode,  new { @class = "form-control" })
                                 </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="name"> Gender </label>
-                                @Html.DropDownListFor(m => m.ClinicalCase_V_Model.Gender,  new List<SelectListItem>{
-                            new SelectListItem{Text="Male", Value="M"}, new SelectListItem{Text="Female", Value="F"}
-                            }, "Select Gender", new { @class = "form-control" })
-
-                        
-                                </div>
+                            </li>
+                        </ul>
 
 
+
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
+                                <label>Patient file</label>
+                                <input type="number" min="1" name="Patient_file" class="form-control" required>
                             </div>
 
-                            <div class="row">
-
-
-
-                                <div class="form-group col-md-6">
-                                    <label for="name"> Citizenship </label>
-
-                                @Html.DropDownListFor(m => m.ClinicalCase_V_Model.Citizenship,  new List<SelectListItem>{
-                            new SelectListItem{Text="Saudi", Value="S"}, new SelectListItem{Text="Non Saudi", Value="NS"}
-                            }, "Select Citizenship", new { @class = "form-control" })
-
-
-                                </div>
-
-
-                                <div class="form-group col-md-6">
-                                    <label for="name"> Health Category </label>
-
-
-                           @Html.DropDownListFor(m => m.ClinicalCase_V_Model.Health_category,  new List<SelectListItem>{
-                            new SelectListItem{Text="Healthy", Value="H"}, new SelectListItem{Text="Compromised", Value="C"}, new SelectListItem{Text="Special care", Value="SC"}
-                            }, "Select Health Category", new { @class = "form-control" })
-                                 
-                                </div>
-
-                            </div>
-
-
-
-
-                            <div class="form-group">
-                                <label for="name"> Rotation</label>
-
-                                <select class="form-control" id="rota" name="Rotation" required>
-                                    <option>Select</option>
-                                    @foreach (var item in Model.RotationList)
-                                    {
-
-                                        <option value="@item.Value">
-                                            @item.Text
-                                        </option>
-                                    }
-                                </select>
-
-
-                            </div>
-
-
-
-
-
-
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <div class="active nav-link">
-                                        <div class="subTitle">
-                                            <h5>Case Information</h5>
-                                        </div>
-
-                                    </div>
-                                </li>
-                            </ul>
-
-
-                            <div class="row">
-
-                                <div class="form-group col-md-6">
-                                    <label for="name"> Age group </label>
-
-                                @Html.DropDownListFor(m => m.RotationList,  new List<SelectListItem>{
-                            new SelectListItem{Text="Pediatric", Value="P"}, new SelectListItem{Text="Adult", Value="A"}, new SelectListItem{Text="Geriatric", Value="G"}
-                            }, "Select Age group", new { @class = "form-control" })
-
-                                </div>
-
-
-                                <div class="form-group col-md-6">
-                                    <label for="name"> Department </label>
-
-
-                                @Html.DropDownListFor(m => m.RotationList,  new List<SelectListItem>{
-                            new SelectListItem{Text="dep 1", Value="Pep1"}, new SelectListItem{Text="dep 2", Value="dep 2"}, new SelectListItem{Text="dep 3", Value="dep3"}
-                            }, "Select Department", new { @class = "form-control" })
-
-
-                                </div>
-
-
-                            </div>
-
-
-
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="name"> Case</label>
-
-
-                                @Html.DropDownListFor(m => m.RotationList,  new List<SelectListItem>{
-                            new SelectListItem{Text="case 1", Value="case1"}, new SelectListItem{Text="case 2", Value="case2"}, new SelectListItem{Text="case 3", Value="case3"}
-                            }, "Select case", new { @class = "form-control" })
-
-
-
-                                </div>
-
-                                <div class="form-group col-md-6">
-
-                                    <div class="form-group">
-                                        <label for="name"> Tooth No</label>
-                                        <select class="form-control" id="tooth" name="Tooth" required>
-                                            <option>Select Tooth No</option>
-                                            @foreach (var item in Model.TeethList)
-                                            {
-
-                                                <option value="@item.Value">
-                                                    @item.Text
-                                                </option>
-                                            }
-
-                                        </select>
-
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <div class="active nav-link">
-                                        <div class="subTitle">
-                                            <h5>Assigned to</h5>
-                                        </div>
-
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <div class="form-group">
-                                <label for="name"> Supervisor</label>
+                            <div class="form-group col-md-6">
+                                <label> Gender </label>
                                 <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
 
-                                
-                                @Html.DropDownListFor(m => m.RotationList,  new List<SelectListItem>{
-                        new SelectListItem{Text="dr 1", Value="dr1"}, new SelectListItem{Text="dr 2", Value="dr2"}
-                            }, "Select Supervisor", new { @class = "form-control" })
-
+                                <select class="form-control" name="gender" required>
+                                    <option disabled>Select</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
                             </div>
 
 
-                            <div id="Hidden_resubmition_case">
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item">
-                                        <div class="active nav-link">
-                                            <div class="subTitle">
-                                                <h5 style="color:hotpink !important">Duplicate Case !</h5>
-                                            </div>
+                        </div>
 
-                                        </div>
-                                    </li>
-                                </ul>
 
+                        <div class="row">
+
+
+
+                            <div class="form-group col-md-6">
+                                <label> Citizenship </label>
+                                <select class="form-control" name="Citizenship" required>
+                                    <option disabled>Select</option>
+                                    <option>Saudi</option>
+                                    <option>Non Saudi</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group col-md-6">
+                                <label> Health Category </label>
+                                <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
+
+                                <select class="form-control" name="Health_Category" required>
+                                    <option disabled>Select</option>
+                                    <option>Healthy</option>
+                                    <option>Compromised</option>
+                                    <option>Special care</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label> Rotation</label>
+                            <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
+
+                            <select class="form-control" name="Rotation" required>
+                                <option disabled>Select</option>
+                                @foreach (var item in Model.RotationList)
+                                {
+
+                                    <option value="@item.Value">
+                                        @item.Text
+                                    </option>
+                                }
+                            </select>
+                        </div>
+
+
+
+
+
+
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <div href="" class="active nav-link">
+                                    <div class="subTitle">
+                                        <h5>Case Information</h5>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+
+
+                        <div class="row">
+
+
+                            <div class="form-group col-md-6">
+                                <label> Age group </label>
+                                <select class="form-control" name="Age_group" required>
+                                    <option disabled>Select</option>
+                                    <option>Pediatric</option>
+                                    <option>Adult</option>
+                                    <option>Geriatric</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group col-md-6">
+                                <label> Department </label>
+
+                                <select class="form-control" name="Department" required>
+                                    <option disabled>Select</option>
+                                    <option>dep 2</option>
+                                    <option>dep 2</option>
+                                    <option>dep 3</option>
+
+
+                                </select>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label> Case</label>
+
+                                <select class="form-control" name="Case" required>
+                                    <option disabled >Select</option>
+                                    <option>case1</option>
+                                    <option>case2</option>
+                                    <option>case3</option>
+
+
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
 
                                 <div class="form-group">
-                                    <label for="name"> You have submitted this case before, please write the reason of the re-submition</label>
-                                    <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
-                            @Html.TextAreaFor(m=> m.ClinicalCase_V_Model.Resubmission_reason,  new { @class = "form-control" })
+                                    <label> Tooth No</label>
+                                    <select class="form-control" name="Tooth" required>
+                                        <option disabled>Select</option>
+                                        
+                                        @foreach (var item in Model.TeethList)
+                                        {
 
-                       
+                                            <option value="@item.Value">
+                                                @item.Text
+                                            </option>
+                                        }
+
+                                    </select>
+
+
                                 </div>
+
                             </div>
+                        </div>
 
 
 
-                            <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your case has been sent. Thank you!</div>
+
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <div href="" class="active nav-link">
+                                    <div class="subTitle">
+                                        <h5>Assigned to</h5>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="form-group">
+                            <label> Supervisor</label>
+                            @*
+                                @Html.DropDownListFor(m => m.RotationList, new List<SelectListItem>{
+                                new SelectListItem{Text="dr 1", Value="dr1"}, new SelectListItem{Text="dr 2", Value="dr2"}
+                                }, "Select Supervisor", new { @class = "form-control" })
+                            *@
+
+                            <select class="form-control" name="Supervisor" required>
+                                <option disabled >Select</option>
+                                @foreach (var item in Model.Supervisor_internList)
+                                {
+
+                                    <option value="@item.Value">
+                                        @item.Text
+                                    </option>
+                                }
+
+                            </select>
+
+
+                        </div>
+
+
+                        <div id="Hidden_resubmition_case">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <div href="" class="active nav-link">
+                                        <div class="subTitle">
+                                            <h5 style="color:hotpink !important">Duplicate Case !</h5>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="form-group">
+                                <label> You have submitted this case before, please write the reason of the re-submition</label>
+                                <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
+
+                                <textarea type="text" min="1" name="DuplicateCase" class="form-control" required>
+</textarea>
                             </div>
-                            <div class="text-center">
-         @*                       
-                                
-                                <button type="submit">Submit case</button>
+                        </div>
 
-*@
-                            @Html.ActionLink("Submit case" , "SubmitCaseButton" , "Student")
-                            
-                            </div>
-                           
 
-                    }
-                    </div>
 
+                        <div class="my-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your case has been sent. Thank you!</div>
+                        </div>
+                        <div class="text-center">
+
+
+                            <button type="submit">
+                                Submit case
+                            </button>
+
+                            @*   onclick="location.href='@Url.Action("SubmitCasePost", "Student")'; return false;"*@
+
+                        </div>
+
+
+
+                    </form>
                 </div>
 
             </div>
 
-
-      
-
-        
-     
+        </div>
     </section><!-- End Contact Section -->
 
 

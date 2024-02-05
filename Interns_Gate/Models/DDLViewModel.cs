@@ -15,6 +15,9 @@ namespace Interns_Gate.Models
         public required IEnumerable<SelectListItem> TeethList { get; set; }
 
 
+        public int SelectedSupervisor { get; set; }
+        public required IEnumerable<SelectListItem> Supervisor_internList { get; set; }
+
         public Clinical_case ClinicalCase_V_Model { get; set; }
     }
 }
