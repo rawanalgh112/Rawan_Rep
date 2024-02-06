@@ -104,41 +104,39 @@ namespace Interns_Gate.Controllers
         } 
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult NewCase(
-        string Patient_file, string gender, string Citizenship, string Health_Category,
-        string Rotation, string Age_group, string Department, string Case, string Tooth, string Supervisor, string DuplicateCase)
-        {
+     
+        public IActionResult NewCase(DDLViewModel m)
 
-           
-    
+        {
 
             Clinical_case NewCaseRecord = new Clinical_case();
 
 
             NewCaseRecord.Stu_id = 00042235;
-            NewCaseRecord.Patientcode = Patient_file;
-            NewCaseRecord.Sup_Id = Supervisor;
-            NewCaseRecord.Gender = gender;
-            NewCaseRecord.Health_category = Health_Category;
-            NewCaseRecord.Rot_id = Rotation;
-            NewCaseRecord.Citizenship = Citizenship;
+            NewCaseRecord.Patientcode = m.ClinicalCase_V_Model.Patientcode;
+            NewCaseRecord.Sup_Id = m.SelectedSupervisor;
+            NewCaseRecord.Gender = m.ClinicalCase_V_Model.Gender;
+            NewCaseRecord.Health_category = m.ClinicalCase_V_Model.Health_category;
+            NewCaseRecord.Rot_id = m.SelectedCaseRotation;
+            NewCaseRecord.Citizenship = m.ClinicalCase_V_Model.Citizenship;
             NewCaseRecord.Score = 0;
             NewCaseRecord.Birth_date = DateTime.Now.ToString();
-            NewCaseRecord.Age_group = Age_group;
-            NewCaseRecord.Depratment_id = Department;
-            NewCaseRecord.Case_id = Case;
-            NewCaseRecord.Tooth_no = Tooth;
+            NewCaseRecord.Age_group = m.ClinicalCase_V_Model.Age_group;
+            NewCaseRecord.Depratment_id = m.ClinicalCase_V_Model.Depratment_id;
+            NewCaseRecord.Case_id = m.ClinicalCase_V_Model.Case_id;
+            NewCaseRecord.Tooth_no = m.SelectedTooth;
             NewCaseRecord.Create_date = DateTime.Now.ToString();
             NewCaseRecord.Accept_date = DateTime.Now.ToString();
             NewCaseRecord.End_date = DateTime.Now.ToString();
             NewCaseRecord.Evlaution_date = DateTime.Now.ToString();
             NewCaseRecord.Status_id = "1";
             NewCaseRecord.Measurement_type = "2";
-            NewCaseRecord.Resubmission_reason = DuplicateCase;
+            NewCaseRecord.Resubmission_reason = m.ClinicalCase_V_Model.Resubmission_reason;
 
 
-            var isPatientCodeDuplicate = _context.Clinical_case.Where(x => x.Patientcode == Patient_file && x.Tooth_no == Tooth && x.Stu_id == 00042235).ToList();
+
+            var isPatientCodeDuplicate = _context.Clinical_case.Where(x => x.Patientcode == NewCaseRecord.Patientcode && x.Tooth_no == NewCaseRecord.Tooth_no && x.Stu_id == 00042235).ToList();
+
             if (isPatientCodeDuplicate.Count == 0)
             {
         
@@ -154,7 +152,7 @@ namespace Interns_Gate.Controllers
             }
             else // Duplicate case.
             {
-                if(DuplicateCase == null)
+                if(m.ClinicalCase_V_Model.Resubmission_reason.ToString() == null)
                 {
 
                     ModelState.AddModelError(string.Empty, "This Case is duplicate, you have the same patient and tooth in your records. To proceed please enter the duplication reason.");

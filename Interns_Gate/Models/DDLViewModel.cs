@@ -8,15 +8,15 @@ namespace Interns_Gate.Models
     {
 
     
-        public int SelectedCaseRotation { get; set; }
+        public string SelectedCaseRotation { get; set; }
 
         public IEnumerable<SelectListItem> RotationList { get; set; }
 
-        public int SelectedTooth { get; set; }
+        public string SelectedTooth { get; set; }
 
         public IEnumerable<SelectListItem> TeethList { get; set; }
 
-        public int SelectedSupervisor { get; set; }
+        public string SelectedSupervisor { get; set; }
 
         public IEnumerable<SelectListItem> Supervisor_internList { get; set; }
 
