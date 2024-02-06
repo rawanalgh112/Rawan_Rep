@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Data;
 using System.Xml.Linq;
 
@@ -87,95 +88,103 @@ namespace Interns_Gate.Controllers
 
         }
 
-        public IActionResult NewCase(Clinical_case clinicalCaseModel)
+        public IActionResult NewCase()
         {
 
-         
 
-            var model = new DDLViewModel
-            {
-                Supervisor_internList = GetSupervisor(),
-                RotationList = GetRotation(),
-                TeethList = GetTeeth()
-            };
 
-            return View(model);
+
+            ViewBag.Supervisor_internList = GetSupervisor();
+            ViewBag.RotationList = GetRotation();
+            ViewBag.TeethList = GetTeeth();
+      
+
+            return View();
 
         } 
 
         [HttpPost]
      
-        public IActionResult NewCase(DDLViewModel m)
+        public IActionResult NewCase(Clinical_case m)
 
         {
 
-            Clinical_case NewCaseRecord = new Clinical_case();
+            //m.Supervisor_internList.Where(i => i.Selected).ToString();
 
 
-            NewCaseRecord.Stu_id = 00042235;
-            NewCaseRecord.Patientcode = m.ClinicalCase_V_Model.Patientcode;
-            NewCaseRecord.Sup_Id = m.SelectedSupervisor;
-            NewCaseRecord.Gender = m.ClinicalCase_V_Model.Gender;
-            NewCaseRecord.Health_category = m.ClinicalCase_V_Model.Health_category;
-            NewCaseRecord.Rot_id = m.SelectedCaseRotation;
-            NewCaseRecord.Citizenship = m.ClinicalCase_V_Model.Citizenship;
-            NewCaseRecord.Score = 0;
-            NewCaseRecord.Birth_date = DateTime.Now.ToString();
-            NewCaseRecord.Age_group = m.ClinicalCase_V_Model.Age_group;
-            NewCaseRecord.Depratment_id = m.ClinicalCase_V_Model.Depratment_id;
-            NewCaseRecord.Case_id = m.ClinicalCase_V_Model.Case_id;
-            NewCaseRecord.Tooth_no = m.SelectedTooth;
-            NewCaseRecord.Create_date = DateTime.Now.ToString();
-            NewCaseRecord.Accept_date = DateTime.Now.ToString();
-            NewCaseRecord.End_date = DateTime.Now.ToString();
-            NewCaseRecord.Evlaution_date = DateTime.Now.ToString();
-            NewCaseRecord.Status_id = "1";
-            NewCaseRecord.Measurement_type = "2";
-            NewCaseRecord.Resubmission_reason = m.ClinicalCase_V_Model.Resubmission_reason;
+            m.Accept_date = DateTime.Now.ToString();
+            m.Stu_id = 00042235;
+
+     
+            m.Score = 0;
+            m.Birth_date = DateTime.Now.ToString();
+
+            m.Create_date = DateTime.Now.ToString();
+            m.Accept_date = DateTime.Now.ToString();
+            m.End_date = DateTime.Now.ToString();
+            m.Evlaution_date = DateTime.Now.ToString();
+            m.Status_id = "1";
+            m.Measurement_type = "2";
+
+            if (m.Resubmission_reason == null)
+                m.Resubmission_reason = "";
+
+            _context.Update(m);
+
+            Clinical_case NewCaseRecord = m;
+ 
+            if (ModelState.IsValid)
+            {
+          
+ _context.Clinical_case.Add(NewCaseRecord);
+            _context.SaveChanges();
+
+            }
 
 
 
             var isPatientCodeDuplicate = _context.Clinical_case.Where(x => x.Patientcode == NewCaseRecord.Patientcode && x.Tooth_no == NewCaseRecord.Tooth_no && x.Stu_id == 00042235).ToList();
+              return RedirectToAction("NewCase", "Student");
 
-            if (isPatientCodeDuplicate.Count == 0)
-            {
-        
-              
-              ModelState.AddModelError(string.Empty, "This Case is duplicate, you have the same patient and tooth in your records. To proceed please enter the duplication reason.");
-                    _context.Clinical_case.Add(NewCaseRecord);
-                    _context.SaveChanges();
+            //if (isPatientCodeDuplicate.Count == 0)
+            //{
 
 
-                    return RedirectToAction("MyCases", "Student");
-                
-
-            }
-            else // Duplicate case.
-            {
-                if(m.ClinicalCase_V_Model.Resubmission_reason.ToString() == null)
-                {
-
-                    ModelState.AddModelError(string.Empty, "This Case is duplicate, you have the same patient and tooth in your records. To proceed please enter the duplication reason.");
-                    return RedirectToAction("NewCase", "Student");
-
-                }
-                else
-                {
-
-                    // reason was entered for the duplicate case.
-               
-                        _context.Clinical_case.Add(NewCaseRecord);
-                        _context.SaveChanges();
-                        return RedirectToAction("MyCases", "Student");
-                    
-
-                }
-
-           
-            }
+            //  ModelState.AddModelError(string.Empty, "This Case is duplicate, you have the same patient and tooth in your records. To proceed please enter the duplication reason.");
 
 
-    
+            //    _context.Clinical_case.Add(NewCaseRecord);
+            //    _context.SaveChanges();
+            //    return RedirectToAction("MyCases", "Student");
+
+
+            //}
+            //else // Duplicate case.
+            //{
+            //    if(m.ClinicalCase_V_Model.Resubmission_reason.ToString() == null)
+            //    {
+
+            //        ModelState.AddModelError(string.Empty, "This Case is duplicate, you have the same patient and tooth in your records. To proceed please enter the duplication reason.");
+            //        return RedirectToAction("NewCase", "Student");
+
+            //    }
+            //    else
+            //    {
+
+            //        // reason was entered for the duplicate case.
+
+            //            _context.Clinical_case.Add(NewCaseRecord);
+            //            _context.SaveChanges();
+            //            return RedirectToAction("MyCases", "Student");
+
+
+            //    }
+
+
+            //}
+
+
+
 
         }
 

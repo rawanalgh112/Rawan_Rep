@@ -8,7 +8,7 @@
 
 
 
-@model DDLViewModel
+@model Clinical_case
 
 
 <meta charset="utf-8">
@@ -65,15 +65,15 @@
                             @Html.ValidationSummary(true, "" , new{ @class= "text-danger"})
                             <div class="form-group col-md-6">
                                 <label>Patient file</label>
-                                @Html.TextBoxFor(m => m.ClinicalCase_V_Model.Patientcode, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m =>  m.ClinicalCase_V_Model.Patientcode, "" , new{ @class="text-danger"})
+                                @Html.TextBoxFor(m => m.Patientcode, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m =>  m.Patientcode, "" , new{ @class="text-danger"})
 
 
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label> Gender </label>
-                                @Html.DropDownListFor(m => m.ClinicalCase_V_Model.Gender, new List<SelectListItem>{
+                                @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>{
                         new SelectListItem{Text="Male", Value="M"}, new SelectListItem{Text="Female", Value="F"}
                         }, "Select Gender", new { @class = "form-control" })
 
@@ -90,7 +90,7 @@
                             <div class="form-group col-md-6">
                                 <label> Citizenship </label>
 
-                                @Html.DropDownListFor(m => m.ClinicalCase_V_Model.Citizenship, new List<SelectListItem>{
+                                @Html.DropDownListFor(m => m.Citizenship, new List<SelectListItem>{
                         new SelectListItem{Text="Saudi", Value="S"}, new SelectListItem{Text="Non Saudi", Value="NS"}
                         }, "Select Citizenship", new { @class = "form-control" })
 
@@ -102,7 +102,7 @@
                                 <label> Health Category </label>
 
 
-                                @Html.DropDownListFor(m => m.ClinicalCase_V_Model.Health_category, new List<SelectListItem>{
+                                @Html.DropDownListFor(m => m.Health_category, new List<SelectListItem>{
                         new SelectListItem{Text="Healthy", Value="H"}, new SelectListItem{Text="Compromised", Value="C"}, new SelectListItem{Text="Special care", Value="SC"}
                         }, "Select Health Category", new { @class = "form-control" })
 
@@ -115,19 +115,9 @@
 
                         <div class="form-group">
                             <label> Rotation </label>
-
-                            @Html.DropDownList("SelectedCaseRotation", Model.RotationList, "Select" , new { @class = "form-control" })
-
-                            @*<select class="form-control" id="rota" name="Rotation" required>
-                                <option>Select</option>
-                                <option> op 2 </option>
-                                @foreach (var item in Model.RotationList)
-                                {
-                                    <option value="@item.Value">
-                                        @item.Text
-                                    </option>
-                                }
-                            </select>*@
+                            @Html.DropDownList("Rot_id", (IEnumerable
+                        <SelectListItem>)ViewBag.RotationList,new { @class="form-control dropdown-toggle" })
+                          @*  @Html.DropDownList("SelectedCaseRotation", Model.RotationList, "Select" , new { @class = "form-control" })*@
 
 
 
@@ -155,7 +145,7 @@
                             <div class="form-group col-md-6">
                                 <label> Age group </label>
 
-                                @Html.DropDownListFor(m => m.ClinicalCase_V_Model.Age_group, new List<SelectListItem>{
+                                @Html.DropDownListFor(m => m.Age_group, new List<SelectListItem>{
                         new SelectListItem{Text="Pediatric", Value="P"}, new SelectListItem{Text="Adult", Value="A"}, new SelectListItem{Text="Geriatric", Value="G"}
                         }, "Select Age group", new { @class = "form-control" })
 
@@ -166,7 +156,7 @@
                                 <label> Department </label>
 
 
-                                @Html.DropDownListFor(m => m.ClinicalCase_V_Model.Depratment_id, new List<SelectListItem>{
+                                @Html.DropDownListFor(m => m.Depratment_id, new List<SelectListItem>{
                         new SelectListItem{Text="dep 1", Value="Pep1"}, new SelectListItem{Text="dep 2", Value="dep 2"}, new SelectListItem{Text="dep 3", Value="dep3"}
                         }, "Select Department", new { @class = "form-control" })
 
@@ -184,7 +174,7 @@
 
 
 
-                                @Html.DropDownListFor(m => m.ClinicalCase_V_Model.Case_id, new List<SelectListItem>{
+                                @Html.DropDownListFor(m => m.Case_id, new List<SelectListItem>{
                         new SelectListItem{Text="case 1", Value="case1"}, new SelectListItem{Text="case 2", Value="case2"}, new SelectListItem{Text="case 3", Value="case3"}
                         }, "Select case", new { @class = "form-control" })
 
@@ -197,8 +187,11 @@
                                 <div class="form-group">
                                     <label> Tooth No</label>
 
+                                    @Html.DropDownList("Tooth_no", (IEnumerable
+                                <SelectListItem>)ViewBag.TeethList,new { @class="form-control dropdown-toggle" })
 
-                                    @Html.DropDownList("SelectedTooth", Model.TeethList, "Select" , new { @class = "form-control" })
+
+                    @*                @Html.DropDownList("SelectedTooth", Model.TeethList, "Select" , new { @class = "form-control" })*@
 
 
 @*
@@ -240,10 +233,12 @@
                         <div class="form-group">
                             <label> Supervisor</label>
 
+                            @Html.DropDownList("Sup_Id", (IEnumerable
+                        <SelectListItem>)ViewBag.Supervisor_internList,new { @class="form-control dropdown-toggle" })
 
-
+@*
                             @Html.DropDownList("SelectedSupervisor", Model.Supervisor_internList, "Select" , new { @class = "form-control" })
-
+*@
 
                       
 
@@ -266,7 +261,7 @@
                             <div class="form-group">
                                 <label> You have submitted this case before, please write the reason of the re-submition</label>
                                 <!-- Html.DropDownListFor(m => m.StudentGender,  new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender") -->
-                                @Html.TextAreaFor(m => m.ClinicalCase_V_Model.Resubmission_reason, new { @class = "form-control" })
+                                @Html.TextAreaFor(m => m.Resubmission_reason, new { @class = "form-control" })
 
 
                             </div>
