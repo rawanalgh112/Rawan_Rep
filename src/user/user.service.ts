@@ -15,8 +15,6 @@ export class UserService {
   async create(createUserDto: CreateUserDto) {
     const { fullName, age } = createUserDto;
 
-
-
     if (!fullName || !age) {
       throw new HttpException(
         'Full name and age are required',
@@ -24,6 +22,7 @@ export class UserService {
       );
     }
 
+    
     try {
       const user = this.userRepository.create({ fullName, age });
       await this.userRepository.save(user);

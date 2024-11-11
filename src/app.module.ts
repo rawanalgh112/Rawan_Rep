@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 const entitiesPath = __dirname + '/**/*.entity{.ts,.js}';
 
+
 @Module({
   imports: [
     ItemModule,
@@ -21,7 +22,7 @@ const entitiesPath = __dirname + '/**/*.entity{.ts,.js}';
       entities: [entitiesPath],
       synchronize: false,
       logging: false,
-    }),
+    }), 
   ],
   controllers: [AppController],
   providers: [AppService],

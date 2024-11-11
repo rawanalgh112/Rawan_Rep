@@ -14,6 +14,8 @@ export class UserController {
   return this.userService.create(createUserDto);
   }
 
+
+  
   @Post('/deleteuser')
   async delete(@Body() body: { id: number }) {
     const { id } = body;  // Extract the 'id' from the body

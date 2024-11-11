@@ -17,6 +17,7 @@ export const dataSourceOptions: DataSourceOptions = {
   entities: ['src/**/*.entity{.ts,.js}'],
 };
 
+
 const dataSource = new DataSource(dataSourceOptions);
 dataSource.initialize();
 
