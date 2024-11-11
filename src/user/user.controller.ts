@@ -6,9 +6,19 @@ import { CreateUserDto } from './dto/create-user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post('')
+
+  @Post('/createuser')
   async create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+   
+   //return createUserDto;
+  return this.userService.create(createUserDto);
+  }
+
+  @Post('/deleteuser')
+  async delete(@Body() body: { id: number }) {
+    const { id } = body;  // Extract the 'id' from the body
+    await this.userService.delete(id);  // Call the service to delete the user
+    return { message: `User with ID ${id} deleted successfully` };
   }
 
   @Get('')

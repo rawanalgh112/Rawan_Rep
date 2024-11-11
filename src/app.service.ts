@@ -7,7 +7,7 @@ export class AppService {
   }
 
   getSum(num1: number, num2: number) {
-    return num1 + num2;
+    return Number(num1) + Number(num2);
   }
 
   getSubtraction(num1: number, num2: number) {

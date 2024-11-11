@@ -1,8 +1,9 @@
 import { Column, PrimaryGeneratedColumn } from 'typeorm';
 import { Entity } from 'typeorm/decorator/entity/Entity';
 
-@Entity()
+@Entity('user')
 export class User {
+
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -11,4 +12,8 @@ export class User {
 
   @Column()
   age: number;
+
+
 }
+
+
