@@ -1,5 +1,6 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
+
 dotenv.config();
 
 export const dataSourceOptions: DataSourceOptions = {
@@ -16,7 +17,7 @@ export const dataSourceOptions: DataSourceOptions = {
   migrations: ['src/migration/*{.ts,.js}'],
   entities: ['src/**/*.entity{.ts,.js}'],
 };
-
+// 
 
 const dataSource = new DataSource(dataSourceOptions);
 dataSource.initialize();

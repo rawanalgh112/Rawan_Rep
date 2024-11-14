@@ -18,4 +18,11 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
   }
+
+  ,
+
+  "include": ["src/**/*.ts"],  // Make sure this is pointing to the correct directory
+  "exclude": ["node_modules"]
 }
+
+

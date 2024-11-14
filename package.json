@@ -5,7 +5,7 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
-  "scripts": { 
+  "scripts": {
     "migration:gen": "npm run typeorm -- migration:generate ./src/migration/$npm_config_name",
     "migration:add": "npm run typeorm -- migration:create",
     "migration:up": "npm run typeorm -- migration:run",

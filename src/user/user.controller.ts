@@ -23,8 +23,10 @@ export class UserController {
     return { message: `User with ID ${id} deleted successfully` };
   }
 
-  @Get('')
+  @Get('/test')
   async findAll() {
-    return this.userService.findAll();
+    return "test";
+    
+    //this.userService.findAll()"";
   }
 }
